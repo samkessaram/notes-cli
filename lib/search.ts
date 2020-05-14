@@ -13,7 +13,7 @@ function grep(term: string): string {
    */
 
   try {
-    return execSync(`grep -r -l -i ${term} ${NOTES_DIRECTORY}`, {
+    return execSync(`grep -r -l -i '${term}' ${NOTES_DIRECTORY}`, {
       encoding: "utf-8",
     })
   } catch (error) {
