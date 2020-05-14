@@ -81,7 +81,7 @@ async function run() {
   const subDirectory = `${NOTES_DIRECTORY}/${dateParts.year}.${dateParts.month}`
   createDirectory(subDirectory)
 
-  const notePath = `${subDirectory}/${title}`
+  const notePath = `${subDirectory}/${title}.md`
 
   if (fileExists(notePath)) {
     log("Note already exists!", LOG_LEVELS.ERROR)
