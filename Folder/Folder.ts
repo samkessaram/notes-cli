@@ -1,10 +1,10 @@
-import { existsSync, mkdirSync } from "fs"
+import { existsSync, mkdirSync, readdirSync } from "fs"
 
 import { log, LOG_LEVELS } from "../Logger"
 import { getDateParts } from "../utils/date"
 
 const USER_DIRECTORY = process.env.HOME // oops only works on OSX
-const NOTES_DIRECTORY = USER_DIRECTORY + "/Notes"
+export const NOTES_DIRECTORY = USER_DIRECTORY + "/Notes"
 function createDirectoryRecursive(dir: string): void {
   if (existsSync(dir)) {
     log(`${dir} already exists. Skipping create.`, LOG_LEVELS.NOTICE)
@@ -21,4 +21,8 @@ export function buildFolderStructure(createdAt: Date): string {
   createDirectoryRecursive(subDirectory)
 
   return subDirectory
+}
+
+export function listContents(path): string[] {
+  return readdirSync(path)
 }

@@ -1,6 +1,5 @@
 import { writeFileSync, accessSync, constants as FS_CONSTANTS } from "fs"
-
-// import { log, LOG_LEVELS } from "../Logger"
+import { exec } from "child_process"
 
 // If no error caught, that means that the file exists and is accessible.
 export function fileExists(path: string): boolean {
@@ -14,4 +13,8 @@ export function fileExists(path: string): boolean {
 
 export function createFile(path: string, body: string): void {
   writeFileSync(path, body)
+}
+
+export function openFile(path: string): void {
+  exec(`code ${path}`)
 }

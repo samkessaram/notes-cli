@@ -1,8 +1,7 @@
 import assert from "assert"
-import { exec } from "child_process"
 import startCase = require("lodash/startCase")
 
-import { createFile, fileExists } from "../File"
+import { createFile, fileExists, openFile } from "../File"
 import { log, LOG_LEVELS } from "../Logger"
 import { DateParts } from "../utils/definitions"
 import { getDateParts } from "../utils/date"
@@ -31,7 +30,8 @@ export class Note {
   }
 
   public open() {
-    exec(`code ${this.location}`)
+    log(`Opening note.`, LOG_LEVELS.NOTICE)
+    openFile(this.location)
   }
 
   private buildTitle(input: string, dateParts: DateParts): string {

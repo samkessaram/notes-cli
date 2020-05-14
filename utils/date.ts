@@ -1,8 +1,12 @@
 import { DateParts } from "./definitions"
 
+export function padLeadingZero(num: number): string {
+  return num.toString().padStart(2, "0")
+}
+
 export function getDateParts(date): DateParts {
-  const month = (date.getMonth() + 1).toString().padStart(2, "0")
-  const day = date.getDate().toString().padStart(2, "0")
+  const month = padLeadingZero(date.getMonth() + 1)
+  const day = padLeadingZero(date.getDate())
   const year = date.getFullYear().toString()
   return { day, month, year }
 }

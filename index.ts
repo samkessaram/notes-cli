@@ -1,20 +1,15 @@
 #!/usr/bin/env ts-node
+const { program } = require("commander")
 
-import { Note } from "./Note"
-import { log, LOG_LEVELS } from "./Logger"
-import { buildFolderStructure } from "./Folder"
+import { create, browse } from "./lib"
 
-async function run() {
-  const input = process.argv.slice(2).join(" ")
+program
+  .command("new <title>")
+  .description("Create a new note")
+  .action((title) => {
+    create(title)
+  })
 
-  const note = new Note(input)
+program.command("browse").description("Browse recent notes").action(browse)
 
-  const path = buildFolderStructure(note.createdAt)
-
-  note.save(path)
-
-  log(`Opening note.`, LOG_LEVELS.NOTICE)
-  note.open()
-}
-
-run()
+program.parse(process.argv)
