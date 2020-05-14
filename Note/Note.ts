@@ -1,4 +1,4 @@
-import assert from "assert"
+const assert = require("assert")
 import startCase = require("lodash/startCase")
 
 import { createFile, fileExists, openFile } from "../File"

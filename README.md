@@ -20,3 +20,4 @@ Right now, this project does 2 things:
 - [ ] Add tests
 - [x] Update folder structure to conform to `/year/month` pattern
 - [x] Create notes as markdown files
+- [ ] Add templates
