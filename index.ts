@@ -50,7 +50,7 @@ function createDirectory(dir): void {
     return
   }
 
-  mkdirSync(dir)
+  mkdirSync(dir, { recursive: true })
   log(`Created ${dir}`, LOG_LEVELS.NOTICE)
 }
 
@@ -78,7 +78,7 @@ async function run() {
 
   createDirectory(NOTES_DIRECTORY)
 
-  const subDirectory = `${NOTES_DIRECTORY}/${dateParts.year}.${dateParts.month}`
+  const subDirectory = `${NOTES_DIRECTORY}/${dateParts.year}/${dateParts.month}`
   createDirectory(subDirectory)
 
   const notePath = `${subDirectory}/${title}.md`
