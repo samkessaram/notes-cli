@@ -16,5 +16,5 @@ export function createFile(path: string, body: string): void {
 }
 
 export function openFile(path: string): void {
-  exec(`code ${path}`)
+  exec(`code '${path}'`)
 }

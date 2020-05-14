@@ -1,7 +1,7 @@
 #!/usr/bin/env ts-node
 const { program } = require("commander")
 
-import { create, browse } from "./lib"
+import { create, browse, search } from "./lib"
 
 program
   .command("new <title>")
@@ -11,5 +11,12 @@ program
   })
 
 program.command("browse").description("Browse recent notes").action(browse)
+
+program
+  .command("search <term>")
+  .description("Search notes")
+  .action((term) => {
+    search(term)
+  })
 
 program.parse(process.argv)
