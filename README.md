@@ -15,6 +15,6 @@ Right now, this project does 2 things:
 
 ## TODO
 
-- [ ] Update folder structure to conform to `/year/month` pattern
 - [ ] Make notes searchable
+- [x] Update folder structure to conform to `/year/month` pattern
 - [x] Create notes as markdown files
