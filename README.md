@@ -17,3 +17,4 @@ Right now, this project does 2 things:
 
 - [ ] Update folder structure to conform to `/year/month` pattern
 - [ ] Make notes searchable
+- [ ] Create notes as markdown files
