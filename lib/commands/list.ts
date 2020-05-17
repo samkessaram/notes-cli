@@ -60,7 +60,7 @@ function handleSelection(files: string[], path: string): void {
     })
 }
 
-export function browse(): void {
+export function list(): void {
   const { month, year } = getDateParts(new Date())
   const { path, files } = traverse(month, year, 0)
 

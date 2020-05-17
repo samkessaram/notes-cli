@@ -57,7 +57,7 @@ function displayResults(files: string[], term: string): void {
     })
 }
 
-export function search(term): void {
+export function find(term): void {
   if (isInvalid(term)) return
   const files = grep(term)
 

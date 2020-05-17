@@ -1,22 +1,22 @@
 #!/usr/bin/env ts-node
 const { program } = require("commander")
 
-import { create, browse, search } from "./lib"
+import { _new, list, find } from "./lib/commands"
 
 program
-  .command("new <title...>")
-  .description("Create a new note")
+  .command("new <note title...>")
+  .description("Start a new note")
   .action((title) => {
-    create(title)
+    _new(title)
   })
 
-program.command("browse").description("Browse recent notes").action(browse)
+program.command("list").description("List recent notes").action(list)
 
 program
-  .command("search <term...>")
+  .command("find <search terms...>")
   .description("Search notes")
   .action((term) => {
-    search(term.join(" "))
+    find(term.join(" "))
   })
 
 program.parse(process.argv)
