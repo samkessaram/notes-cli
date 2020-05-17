@@ -41,9 +41,12 @@ function parseFiles(filesString: string): string[] {
 function displayResults(files: string[], term: string): void {
   const prompt = new Select({
     message: `Files including '${term}'`,
-    choices: files.map((f) => {
-      return f.slice(f.lastIndexOf("/") + 1)
-    }),
+    choices: files
+      .map((f) => {
+        return f.slice(f.lastIndexOf("/") + 1)
+      })
+      .sort()
+      .reverse(),
   })
 
   prompt

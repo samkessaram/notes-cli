@@ -4,19 +4,19 @@ const { program } = require("commander")
 import { _new, list, find } from "./lib/commands"
 
 program
-  .command("new <note title...>")
+  .command("new <noteTitle...>")
   .description("Start a new note")
-  .action((title) => {
-    _new(title)
+  .action((noteTitle) => {
+    _new(noteTitle)
   })
 
 program.command("list").description("List recent notes").action(list)
 
 program
-  .command("find <search terms...>")
+  .command("find <searchTerms...>")
   .description("Search notes")
-  .action((term) => {
-    find(term.join(" "))
+  .action((searchTerms) => {
+    find(searchTerms.join(" "))
   })
 
 program.parse(process.argv)
