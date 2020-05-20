@@ -11,7 +11,7 @@ function decrementDateParts(
 ): { month: string; year: string } {
   let month = prevMonth
   let year = prevYear
-  if (prevMonth === "1") {
+  if (parseInt(prevMonth) === 1) {
     month = "12"
     year = (parseInt(prevYear) - 1).toString()
   } else {
@@ -46,10 +46,7 @@ function handleSelection(files: string[], path: string): void {
   const prompt = new Select({
     name: "title",
     message: "Select a recent note",
-    choices: files
-      .filter((file) => file[0] !== ".")
-      .sort()
-      .reverse(),
+    choices: files.sort().reverse(),
   })
 
   prompt
@@ -63,7 +60,6 @@ function handleSelection(files: string[], path: string): void {
 export function list(): void {
   const { month, year } = getDateParts(new Date())
   const { path, files } = traverse(month, year, 0)
-
   if (files.length === 0) {
     log("No recent files", LOG_LEVELS.WARN)
     return

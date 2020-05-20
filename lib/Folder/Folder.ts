@@ -5,6 +5,11 @@ import { getDateParts } from "../utils/date"
 
 const USER_DIRECTORY = process.env.HOME // oops only works on OSX
 export const NOTES_DIRECTORY = USER_DIRECTORY + "/Notes"
+const SYSTEM_FILES = [".DS_Store"]
+
+function filterSystemFiles(files) {
+  return files.filter((file) => !SYSTEM_FILES.includes(file))
+}
 function createDirectoryRecursive(dir: string): void {
   if (existsSync(dir)) {
     log(`${dir} already exists. Skipping create.`, LOG_LEVELS.NOTICE)
@@ -24,5 +29,5 @@ export function buildFolderStructure(createdAt: Date): string {
 }
 
 export function listContents(path): string[] {
-  return readdirSync(path)
+  return filterSystemFiles(readdirSync(path))
 }

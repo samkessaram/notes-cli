@@ -17,15 +17,16 @@ export class Note {
     this.title = this.buildTitle(title, getDateParts(this.createdAt))
   }
 
-  public save(path) {
+  public save(path): boolean {
     const location = `${path}/${this.title}.md`
     if (fileExists(location)) {
       log("Note already exists!", LOG_LEVELS.ERROR)
-      return
+      return false
     } else {
       log(`Creating note ${this.title}`, LOG_LEVELS.SUCCESS)
       createFile(location, `${this.title}\n\n`)
       this.location = location
+      return true
     }
   }
 

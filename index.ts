@@ -7,7 +7,7 @@ program
   .command("new <noteTitle...>")
   .description("Start a new note")
   .action((noteTitle) => {
-    _new(noteTitle)
+    _new(noteTitle.join(" "))
   })
 
 program.command("list").description("List recent notes").action(list)
