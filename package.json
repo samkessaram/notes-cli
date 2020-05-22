@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "bin": {
-    "note": "./index.ts"
+    "note": "./dist/index.js"
   },
   "scripts": {
+    "build": "tsc -p tsconfig.json && pkg package.json --targets node8-macos",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node index.ts"
   },
@@ -24,5 +25,9 @@
     "ts-node": "^8.10.1",
     "typescript": "^3.9.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/mocha": "^7.0.2",
+    "mocha": "^7.1.2",
+    "pkg": "^4.4.8"
+  }
 }
