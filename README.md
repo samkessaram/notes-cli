@@ -8,11 +8,10 @@ I like to take notes, but have found other tools to have too much overhead. I fo
 
 ## What does it do?
 
-Right now, this project does 2 things:
-
-1. Allows you to create a new text file from the command line via `note <title>`
-2. Create notes from user-defined markdown templates.
-3. Organizes notes upon creation in `~/Notes/<year>.<month>/`
+1. Creates new markdown notes.
+2. Searches through previous notes.
+3. Creates notes from user-defined templates.
+4. Organizes notes in `~/Notes/<year>/<month>/`
 
 ## How to install
 
@@ -37,8 +36,8 @@ Search notes:
 ## TODO
 
 - [x] Make notes searchable
-- [ ] Sanitize inputs
-- [ ] Add tests
 - [x] Update folder structure to conform to `/year/month` pattern
 - [x] Create notes as markdown files
 - [x] Add templates
+- [ ] Sanitize inputs
+- [ ] Add tests
