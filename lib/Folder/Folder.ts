@@ -5,6 +5,7 @@ import { getDateParts } from "../utils/date"
 
 const USER_DIRECTORY = process.env.HOME // oops only works on OSX
 export const NOTES_DIRECTORY = USER_DIRECTORY + "/Notes"
+export const TEMPLATES_DIRECTORY = NOTES_DIRECTORY + "/templates"
 const SYSTEM_FILES = [".DS_Store"]
 
 function filterSystemFiles(files) {

@@ -11,7 +11,28 @@ I like to take notes, but have found other tools to have too much overhead. I fo
 Right now, this project does 2 things:
 
 1. Allows you to create a new text file from the command line via `note <title>`
-2. Organizes notes upon creation in `~/Notes/<year>.<month>/`
+2. Create notes from user-defined markdown templates.
+3. Organizes notes upon creation in `~/Notes/<year>.<month>/`
+
+## How to install
+
+1. Clone the repo
+2. `npm i`
+3. `npm run build`
+
+## Usage
+
+Create a new note:
+
+`note new [-t <template name>] <title>`
+
+List recent notes:
+
+`note list`
+
+Search notes:
+
+`note find <search terms>`
 
 ## TODO
 
@@ -20,4 +41,4 @@ Right now, this project does 2 things:
 - [ ] Add tests
 - [x] Update folder structure to conform to `/year/month` pattern
 - [x] Create notes as markdown files
-- [ ] Add templates
+- [x] Add templates

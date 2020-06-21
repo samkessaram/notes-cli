@@ -1,4 +1,9 @@
-import { writeFileSync, accessSync, constants as FS_CONSTANTS } from "fs"
+import {
+  writeFileSync,
+  readFileSync,
+  accessSync,
+  constants as FS_CONSTANTS,
+} from "fs"
 import { exec } from "child_process"
 
 // If no error caught, that means that the file exists and is accessible.
@@ -17,4 +22,8 @@ export function createFile(path: string, body: string): void {
 
 export function openFile(path: string): void {
   exec(`code '${path}'`)
+}
+
+export function readFile(path: string): string {
+  return readFileSync(path, "utf-8")
 }

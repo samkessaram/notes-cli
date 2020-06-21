@@ -5,7 +5,7 @@ export const LOG_LEVELS = {
   WARN: "yellow",
   ERROR: "red",
   SUCCESS: "green",
-  NOTICE: "blue",
+  NOTICE: "gray",
 }
 
 export function log(input: string, level = this.LOG_LEVELS.DEFAULT): void {

@@ -1,7 +1,8 @@
 const assert = require("assert")
 import startCase = require("lodash/startCase")
 
-import { createFile, fileExists, openFile } from "../File"
+import { createFile, fileExists, openFile, readFile } from "../File"
+import { TEMPLATES_DIRECTORY } from "../Folder"
 import { log, LOG_LEVELS } from "../Logger"
 import { DateParts } from "../utils/definitions"
 import { getDateParts } from "../utils/date"
@@ -10,11 +11,13 @@ export class Note {
   public createdAt: Date
   public title: string
   private location: string
+  private template: string
 
-  constructor(title: string) {
+  constructor(title: string, template?: string) {
     assert(title, "You must enter a title for your note!")
     this.createdAt = new Date()
     this.title = this.buildTitle(title, getDateParts(this.createdAt))
+    this.template = template
   }
 
   public save(path): boolean {
@@ -24,7 +27,8 @@ export class Note {
       return false
     } else {
       log(`Creating note ${this.title}`, LOG_LEVELS.SUCCESS)
-      createFile(location, `${this.title}\n\n`)
+      const body = this.buildBody(this.title, this.template)
+      createFile(location, body)
       this.location = location
       return true
     }
@@ -40,5 +44,27 @@ export class Note {
     const { day, month, year } = dateParts
 
     return `${year}.${month}.${day}_${title}`
+  }
+
+  private buildBody(title: string, templateName?: string): string {
+    if (templateName) {
+      const templatePath = this.getTemplatePath(templateName)
+      try {
+        const templateBody = readFile(templatePath)
+        return templateBody.replace("{{ title }}", title)
+      } catch (error) {
+        log(
+          `Error fetching template '${templateName}'. Make sure template exists at '${templatePath}'`,
+          LOG_LEVELS.ERROR,
+        )
+        log(error, LOG_LEVELS.NOTICE)
+      }
+    }
+
+    return `${title}\n\n`
+  }
+
+  private getTemplatePath(templateName: string): string {
+    return `${TEMPLATES_DIRECTORY}/${templateName}.md`
   }
 }
