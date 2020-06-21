@@ -14,9 +14,10 @@ export class Note {
   private template: string
 
   constructor(title: string, template?: string) {
-    assert(title, "You must enter a title for your note!")
+    const noteTitle = title || template
+    assert(noteTitle, "You must enter a title or template for your note!")
     this.createdAt = new Date()
-    this.title = this.buildTitle(title, getDateParts(this.createdAt))
+    this.title = this.buildTitle(noteTitle, getDateParts(this.createdAt))
     this.template = template
   }
 

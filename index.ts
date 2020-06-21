@@ -4,7 +4,7 @@ const { program } = require("commander")
 import { _new, list, find } from "./lib/commands"
 
 program
-  .command("new <noteTitle...>")
+  .command("new [noteTitle...]")
   .option("-t, --template <templateName>", "template to use")
   .description("Start a new note")
   .action((noteTitle, commandObject) => {
