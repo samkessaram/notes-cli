@@ -24,7 +24,7 @@ Right now, this project does 2 things:
 
 Create a new note:
 
-`note new [-t <template name>] <title>`
+`note new [-t <template name>] [title]`
 
 List recent notes:
 
