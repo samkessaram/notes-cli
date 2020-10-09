@@ -13,12 +13,19 @@ export class Note {
   private location: string
   private template: string
 
-  constructor(title: string, template?: string) {
+  constructor(args: { title?: string; template?: string }) {
+    const { title, template } = args
     const noteTitle = title || template
     assert(noteTitle, "You must enter a title or template for your note!")
     this.createdAt = new Date()
-    this.title = this.buildTitle(noteTitle, getDateParts(this.createdAt))
-    this.template = template
+    this.title = this.buildTitle({
+      title: noteTitle,
+      dateParts: getDateParts(this.createdAt),
+    })
+
+    if (template) {
+      this.template = template
+    }
   }
 
   public save(path): boolean {
@@ -40,11 +47,12 @@ export class Note {
     openFile(this.location)
   }
 
-  private buildTitle(input: string, dateParts: DateParts): string {
-    const title = startCase(input).replace(/\s/g, "")
+  private buildTitle(args: { title: string; dateParts: DateParts }): string {
+    const { title, dateParts } = args
+    const formattedTitle = startCase(title).replace(/\s/g, "")
     const { day, month, year } = dateParts
 
-    return `${year}.${month}.${day}_${title}`
+    return `${year}.${month}.${day}_${formattedTitle}`
   }
 
   private buildBody(title: string, templateName?: string): string {
