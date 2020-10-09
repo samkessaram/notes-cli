@@ -10,6 +10,7 @@
     "esModuleInterop": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
+    "strictNullChecks": true,
     "sourceMap": true
   },
   "exclude": ["node_modules", "dist", "**/*.test.ts"]

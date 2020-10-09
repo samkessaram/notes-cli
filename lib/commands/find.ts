@@ -17,7 +17,7 @@ function grep(term: string): string {
       encoding: "utf-8",
     })
   } catch (error) {
-    return
+    return ""
   }
 }
 

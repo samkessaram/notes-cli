@@ -1,4 +1,3 @@
-const assert = require("assert")
 import startCase = require("lodash/startCase")
 
 import { createFile, fileExists, openFile, readFile } from "../File"
@@ -16,8 +15,12 @@ export class Note {
   constructor(args: { title?: string; template?: string }) {
     const { title, template } = args
     const noteTitle = title || template
-    assert(noteTitle, "You must enter a title or template for your note!")
     this.createdAt = new Date()
+
+    if (!noteTitle) {
+      throw new Error("You must enter a title or template for your note!")
+    }
+
     this.title = this.buildTitle({
       title: noteTitle,
       dateParts: getDateParts(this.createdAt),

@@ -7,8 +7,7 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.json && pkg package.json --targets node8-macos",
-    "test": "mocha -r ts-node/register lib/**/*.test.ts",
-    "start": "ts-node index.ts"
+    "test": "tsc && mocha -r ts-node/register lib/**/*.test.ts"
   },
   "author": "",
   "license": "ISC",
