@@ -6,7 +6,7 @@
     "note": "./dist/index.js"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.json && pkg package.json --targets node8-macos",
+    "build": "tsc -p tsconfig.json && pkg package.json --targets node10 --debug",
     "test": "tsc && mocha -r ts-node/register lib/**/*.test.ts"
   },
   "author": "",

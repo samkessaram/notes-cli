@@ -18,6 +18,7 @@ I like to take notes, but have found other tools to have too much overhead. I fo
 1. Clone the repo
 2. `npm i`
 3. `npm run build`
+4. Create an alias to the executable. (alias note="~/notes-cli/notes")
 
 ## Usage
 
